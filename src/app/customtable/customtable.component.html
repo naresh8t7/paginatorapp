@@ -1,0 +1,30 @@
+<div [ngClass]="{'table-responsive': options.config.clientPaging}">
+  <table class="table-striped table-hover custom-table">
+    <thead>
+    <tr>
+      <th class="th-checkbox" *ngIf="options.config.showSelectAll">
+        <app-select-all-checkbox class="toggle-all" [items]="filteredDataObservable"></app-select-all-checkbox>
+      </th>
+      <th *ngFor="let column of options.columns">
+        <span [innerHTML]="column.name"></span>
+      </th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of filteredData">
+      <td class="td-checkbox" *ngIf="options.config.showSelectCheckbox">
+        <input type="checkbox" [(ngModel)]="row.isSelected">
+      </td>
+      <td *ngFor="let column of options.columns">
+        <span [innerHTML]="getCellValue(row, column)"></span>
+        <input type="checkbox" *ngIf="column.isCheckbox" [checked]="getCellValue(row, column)"
+               (click)="setCellValue(row, column, !getCellValue(row, column), $event)">
+      </td>
+      <td class="td-btn">
+        <button type="button" class="btn btn-primary btn-sm" (click)="submitStatus(row.id, row.status)">Submit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
