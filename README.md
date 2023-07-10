@@ -20,8 +20,6 @@ The custom table component is shared component used by both the pagination table
 can be further customized based on the table options and features like sorting can be added in to the table. Row data can also be customized.
 
 
-Due to time constraints tests are not provided.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
